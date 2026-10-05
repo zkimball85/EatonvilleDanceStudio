@@ -1,3 +1,6 @@
 <Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/EatonvilleDanceStudio.Tests/EatonvilleDanceStudio.Tests.csproj" />
+  </Folder>
   <Project Path="EatonvilleDanceStudio/EatonvilleDanceStudio.csproj" />
 </Solution>
