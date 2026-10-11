@@ -1,5 +1,6 @@
 using EatonvilleDanceStudio.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
@@ -11,8 +12,8 @@ builder.Services.AddDbContext<EatonvilleDanceStudioDb>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<EatonvilleDanceStudioDb>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>().AddEntityFrameworkStores<EatonvilleDanceStudioDb>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -44,5 +45,11 @@ app.MapControllerRoute(
 
 app.MapRazorPages()
    .WithStaticAssets();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    await ContextSeed.SeedRolesAsync(roleManager);
+}
 
 app.Run();
