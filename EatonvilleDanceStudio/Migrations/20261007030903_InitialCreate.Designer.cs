@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EatonvilleDanceStudio.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(EatonvilleDanceStudioDb))]
     [Migration("20261007030903_InitialCreate")]
     partial class InitialCreate
     {

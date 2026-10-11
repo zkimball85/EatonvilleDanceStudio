@@ -29,3 +29,61 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+body {
+    background-color: #0a0a0a; /* Deep black background */
+    color: #f8f9fa; /* Light text for contrast */
+}
+
+/* glowing text */
+.text-neon {
+    color: #ff10f0;
+    text-shadow: 0 0 5px #ff10f0, 0 0 10px #ff10f0;
+}
+
+/* glowing button */
+.btn-neon {
+    background-color: transparent;
+    color: #ff10f0;
+    border: 2px solid #ff10f0;
+    box-shadow: 0 0 8px #ff10f0 inset, 0 0 8px #ff10f0;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-neon:hover, .btn-neon:focus {
+    background-color: #ff10f0;
+    color: #000;
+    box-shadow: 0 0 15px #ff10f0 inset, 0 0 15px #ff10f0;
+}
+
+/* Dark card background to pop off the black body */
+.card-dark {
+    background-color: #1a1a1a;
+    border: 1px solid #ff10f0; /* Pink border */
+}
+
+/* Make inputs look cool on dark backgrounds */
+.form-control-dark {
+    background-color: #222;
+    color: white;
+    border: 1px solid #444;
+}
+
+.form-control-dark:focus {
+    background-color: #2a2a2a;
+    color: white;
+    border-color: #ff10f0;
+    box-shadow: 0 0 5px #ff10f0;
+}
+
+.form-control-dark::placeholder {
+    color: #999 !important; /* Light gray so it shows up on the dark background */
+    opacity: 1;
+}
+
+/* Make the floating label glow neon pink when the input is focused or filled out */
+.form-floating > .form-control-dark:focus ~ label,
+.form-floating > .form-control-dark:not(:placeholder-shown) ~ label {
+    color: #ff10f0;
+    text-shadow: 0 0 5px #ff10f0;
+    background-color: transparent;
+}

@@ -1,0 +1,44 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card card-dark p-4 shadow-lg">
+            <h1 class="text-center text-neon mb-4">@ViewData["Title"]</h1>
+            
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <p class="text-center text-light">Create a new account and join the studio!</p>
+                <hr class="border-secondary" />
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control form-control-dark" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="text-muted">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control form-control-dark" autocomplete="new-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="text-muted">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                
+                <div class="form-floating mb-4">
+                    <input asp-for="Input.ConfirmPassword" class="form-control form-control-dark" autocomplete="new-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.ConfirmPassword" class="text-muted">Confirm Password</label>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-neon">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
